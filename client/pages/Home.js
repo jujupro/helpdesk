@@ -5,7 +5,7 @@ function Home() {
   return (
     <div className="home-btns">
       <Link to="/new-ticket" className="btn btn-reverse btn-block">
-        Create New Ticket
+        Create Ticket
       </Link>
 
       <Link to="/tickets" className="btn btn-reverse btn-block">

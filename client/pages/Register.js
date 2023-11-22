@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { register } from '../features/auth/authSlice';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +12,15 @@ const Register = () => {
   });
 
   const { name, email, password, password2 } = formData;
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
+  //console.log('user:', user);
+
+  useEffect(() => {
+    if (user !== null) navigate('/');
+  }, [user]);
 
   const onchange = (e) => {
     setFormData((prevState) => ({
@@ -21,6 +33,14 @@ const Register = () => {
     e.preventDefault();
     if (password !== password2) {
       window.alert('Passwords do not match!');
+    } else {
+      const userData = {
+        name,
+        email,
+        password,
+      };
+
+      dispatch(register(userData));
     }
   };
 

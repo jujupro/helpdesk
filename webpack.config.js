@@ -47,9 +47,11 @@ module.exports = {
       directory: path.resolve(__dirname, 'build'),
     },
     historyApiFallback: true,
+    port: 8080,
+    compress: true,
 
-    // proxy: {
-    //   '/': 'http://localhost:3000',
-    // },
+    proxy: {
+      '/api/user': 'http://localhost:3000',
+    },
   },
 };

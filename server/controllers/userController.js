@@ -41,7 +41,7 @@ userController.registerUser = async (req, res, next) => {
       id: user.id,
       name: user.name,
       email: user.email,
-      isAdmin: user.isAdmin,
+      //isAdmin: user.isAdmin,
       token: generateToken(user.id),
     });
   } else {
@@ -67,7 +67,7 @@ userController.loginUser = async (req, res, next) => {
       id: user.id,
       name: user.name,
       email: user.email,
-      isAdmin: user.isAdmin,
+      //isAdmin: user.isAdmin,
       token: generateToken(user.id),
     });
   } else {

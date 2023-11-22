@@ -9,9 +9,11 @@
  * ************************************
  */
 
-import { createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import reducers from './reducers/index';
+import { configureStore } from '@reduxjs/toolkit';
+import authReducer from './features/auth/authSlice';
 
-const store = createStore(reducers, composeWithDevTools());
-export default store;
+export const store = configureStore({
+  reducer: {
+    auth: authReducer,
+  },
+});

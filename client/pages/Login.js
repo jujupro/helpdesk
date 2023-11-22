@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { login } from '../features/auth/authSlice';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -7,6 +10,14 @@ const Login = () => {
   });
 
   const { email, password } = formData;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { user } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (user !== null) navigate('/');
+  }, [user]);
 
   const onchange = (e) => {
     setFormData((prevState) => ({
@@ -15,7 +26,15 @@ const Login = () => {
     }));
   };
 
-  const onSubmit = (e) => {};
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const userData = {
+      email,
+      password,
+    };
+
+    dispatch(login(userData));
+  };
 
   return (
     <div>
