@@ -13,16 +13,16 @@ app.use(express.urlencoded({ extended: false }));
 //connect to DB
 connectDB();
 
-if (process.env.NODE_ENV === 'production') {
-  // serve the frontend React code
-  app.use('/build', express.static(path.join(__dirname, '../build')));
+// if (process.env.NODE_ENV === 'production') {
+// serve the frontend React code
+app.use('/build', express.static(path.join(__dirname, '../build')));
 
-  // Start point of entire app. Browser hits route '/' -> serve index.html
-  app.get('/', (req, res) => {
-    //inside index.html, there is src="build/bundle.js" hence it will fire line 20
-    return res.status(200).sendFile(path.join(__dirname, '../index.html'));
-  });
-}
+// Start point of entire app. Browser hits route '/' -> serve index.html
+app.get('*', (req, res) => {
+  //inside index.html, there is src="build/bundle.js" hence it will fire line 20
+  return res.status(200).sendFile(path.join(__dirname, '../index.html'));
+});
+// }
 
 //routes
 app.use('/api/users', userRouter);
