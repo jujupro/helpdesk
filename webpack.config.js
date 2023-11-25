@@ -1,13 +1,15 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
+// console.log(path.resolve(__dirname, 'build'));
+
 module.exports = {
   mode: process.env.NODE_ENV, //access NODE_ENV variable
   entry: './client/index.js',
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
-    publicPath: '/',
+    publicPath: process.env.NODE_ENV === 'production' ? '/build/' : '/',
   },
 
   module: {
@@ -52,6 +54,7 @@ module.exports = {
 
     proxy: {
       '/api/user': 'http://localhost:3000',
+      '/api/tickets': 'http://localhost:3000',
     },
   },
 };

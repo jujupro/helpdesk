@@ -18,6 +18,7 @@ const Register = () => {
   const { user } = useSelector((state) => state.auth);
   //console.log('user:', user);
 
+  //if user registered or logged in, navigate to home page
   useEffect(() => {
     if (user !== null) navigate('/');
   }, [user]);
@@ -54,7 +55,6 @@ const Register = () => {
         <form onSubmit={onSubmit}>
           <div className="form-group">
             <input
-              className="form-control"
               type="text"
               id="name"
               name="name"
@@ -67,7 +67,6 @@ const Register = () => {
 
           <div className="form-group">
             <input
-              className="form-control"
               type="text"
               id="email"
               name="email"
@@ -80,7 +79,6 @@ const Register = () => {
 
           <div className="form-group">
             <input
-              className="form-control"
               type="password"
               id="password"
               name="password"
@@ -93,7 +91,6 @@ const Register = () => {
 
           <div className="form-group">
             <input
-              className="form-control"
               type="password"
               id="password2"
               name="password2"
@@ -104,7 +101,7 @@ const Register = () => {
             />
           </div>
           <div className="form-group">
-            <button className="btn btn-block">Submit</button>
+            <button className="btn btn-reverse">Submit</button>
           </div>
         </form>
       </section>

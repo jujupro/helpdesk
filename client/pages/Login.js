@@ -46,7 +46,6 @@ const Login = () => {
         <form onSubmit={onSubmit}>
           <div className="form-group">
             <input
-              className="form-control"
               type="text"
               id="email"
               name="email"
@@ -59,7 +58,6 @@ const Login = () => {
 
           <div className="form-group">
             <input
-              className="form-control"
               type="password"
               id="password"
               name="password"
@@ -71,7 +69,7 @@ const Login = () => {
           </div>
 
           <div className="form-group">
-            <button className="btn btn-block">Submit</button>
+            <button className="btn btn-reverse">Submit</button>
           </div>
         </form>
       </section>

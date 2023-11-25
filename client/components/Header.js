@@ -7,9 +7,10 @@ import { useSelector } from 'react-redux';
 
 const Header = () => {
   const { user } = useSelector((state) => state.auth);
+
   return (
     <header className="header">
-      <div className="logo">
+      <div>
         <Link to="/">
           <BsFillPatchQuestionFill /> Help Desk
         </Link>
@@ -25,6 +26,7 @@ const Header = () => {
                 <IoMdLogIn /> Login
               </Link>
             </li>
+
             <li>
               <Link to="/register">
                 <FaCircleUser /> Register

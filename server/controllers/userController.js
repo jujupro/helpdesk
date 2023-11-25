@@ -82,7 +82,15 @@ userController.loginUser = async (req, res, next) => {
 //@desc get current user
 //@route /api/users/me
 //@access public
+
 userController.getMe = async (req, res, next) => {
+  if (!res.locals.user) {
+    return next({
+      log: 'Not authorized',
+      status: 401,
+      message: { err: 'Not authorized' },
+    });
+  }
   const userInfo = {
     id: res.locals.user._id, //change to id instead of _id
     email: res.locals.user.email,

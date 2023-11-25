@@ -15,6 +15,7 @@ const protect = async (req, res, next) => {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       //get the user from the token and save it in res.locals
       res.locals.user = await User.findById(decoded.id).select('-password');
+
       return next();
     } catch (error) {
       return next({
@@ -23,8 +24,8 @@ const protect = async (req, res, next) => {
         message: { err: error },
       });
     }
-  }
-  if (!token) {
+  } else {
+    console.log('newTicket route: not authorized!');
     return next({
       log: 'Not authorized',
       status: 401,
